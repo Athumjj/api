@@ -10,25 +10,34 @@ app.get('/profile', async (req, res) => {
         return res.status(400).send('Missing username or avatarUrl');
     }
 
-    const canvas = createCanvas(700, 250);
-    const ctx = canvas.getContext('2d');
+    const validExtensions = /\.(jpg|jpeg|png)$/i;
+    if (!validExtensions.test(avatarUrl)) {
+        return res.status(400).send('Invalid avatar URL. Only jpg, jpeg, and png are allowed.');
+    }
 
-    // Background
-    ctx.fillStyle = '#7289da';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    try {
+        const canvas = createCanvas(700, 250);
+        const ctx = canvas.getContext('2d');
 
-    // Load avatar
-    const avatar = await loadImage(avatarUrl);
-    ctx.drawImage(avatar, 25, 25, 200, 200);
+        // Background
+        ctx.fillStyle = '#7289da';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Username
-    ctx.font = 'bold 40px sans-serif';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(username, 250, 125);
+        // Load avatar
+        const avatar = await loadImage(avatarUrl);
+        ctx.drawImage(avatar, 25, 25, 200, 200);
 
-    const buffer = canvas.toBuffer('image/png');
-    res.set('Content-Type', 'image/png');
-    res.send(buffer);
+        // Username
+        ctx.font = 'bold 40px sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(username, 250, 125);
+
+        const buffer = canvas.toBuffer('image/png');
+        res.set('Content-Type', 'image/png');
+        res.send(buffer);
+    } catch (error) {
+        res.status(500).send('Error processing the image.');
+    }
 });
 
 app.listen(port, () => {
