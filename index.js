@@ -26,8 +26,9 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     // Background
-    ctx.fillStyle = '#7289da';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const bgImage = await loadImage(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPug_Mbp9HNPCj1P8HE3NUwHuzUlfUkZC63y3ggmkc88DtG9O2powcj22&s=10);
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+        
 
     try {
         // Load avatar
