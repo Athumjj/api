@@ -26,7 +26,7 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     // Background
-    const bgImage = await loadImage("https://cdn.discordapp.com/attachments/1256477881635442759/1267136493357367358/banner-bot.png?ex=66a7b052&is=66a65ed2&hm=37657b48b6154aa7332305288d490487425130b61ef2e184fc9ecb3efd81b8fb&");
+    const bgImage = await loadImage("https://cdn.discordapp.com/attachments/1232193462690910220/1267217261324926987/1722198522903.png?ex=66a7fb8a&is=66a6aa0a&hm=b286a1e55391e43d0cd2e7e9d9a90818249a01c644bf68e9041bbc70bbf3843f&");
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
     try {
