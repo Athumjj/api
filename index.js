@@ -31,8 +31,23 @@ app.get('/profile', async (req, res) => {
 
     try {
         // Load avatar
-        const avatar = await loadImage(avatarUrl);
-        ctx.drawImage(avatar, 25, 25, 200, 200);
+    const avatar = await loadImage(avatarUrl);
+    const avatarX = 25;
+    const avatarY = 25;
+    const avatarWidth = 200;
+    const avatarHeight = 200;
+    const cornerRadius = parseInt(radius) || 50; // Default radius to 50 if not provided
+
+    // Create a clipping mask for the avatar with rounded corners
+    ctx.save();
+    drawRoundedRect(ctx, avatarX, avatarY, avatarWidth, avatarHeight, cornerRadius);
+    ctx.clip();
+
+    // Draw avatar
+    ctx.drawImage(avatar, avatarX, avatarY, avatarWidth, avatarHeight);
+
+    // Restore the context to stop clipping
+    ctx.restore();
         
         // Username
         ctx.font = 'bold 40px "Open Sans"';
