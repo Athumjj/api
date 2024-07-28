@@ -11,7 +11,9 @@ app.get('/profile', async (req, res) => {
     }
 
     const validExtensions = /\.(jpg|jpeg|png)$/i;
-    if (!validExtensions.test(avatarUrl)) {
+    const urlPath = new URL(avatarUrl).pathname;
+
+    if (!validExtensions.test(urlPath)) {
         return res.status(400).send('Invalid avatar URL. Only jpg, jpeg, and png are allowed.');
     }
 
