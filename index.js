@@ -32,7 +32,7 @@ app.get('/profile', async (req, res) => {
     try {
         // Load avatar
         const avatar = await loadImage(avatarUrl);
-        ctx.drawImage(avatar, 107, 86, 152, 152);
+        ctx.drawImage(avatar, 88, 61, 146, 146);
         
         // Username
         ctx.font = 'bold 40px "Open Sans"';
