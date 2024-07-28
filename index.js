@@ -9,17 +9,18 @@ registerFont(path.join(__dirname, 'Fonte.otf'), { family: 'Open Sans' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
-    return url.replace(/(\.jpeg|\.jpg|\.webp)(\?.*)?$/, '.png');
+    // Check if URL ends with .jpeg, .jpg, or .webp and replace with .png
+    return url.replace(/\.(jpeg|jpg|webp)(\?.*)?$/, '.png');
 };
 
 app.get('/profile', async (req, res) => {
     let { username, avatarUrl, fundoUrl } = req.query;
 
     if (!username || !avatarUrl || !fundoUrl) {
-        return res.status(400).send('Missing username or avatarUrl');
+        return res.status(400).send('Missing username, avatarUrl, or fundoUrl');
     }
 
-    // Convert avatar URL to PNG
+    // Convert avatar and fundo URLs to PNG
     avatarUrl = convertToPng(avatarUrl);
     fundoUrl = convertToPng(fundoUrl);
 
@@ -27,7 +28,7 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     try {
-        // Background
+        // Load background
         const fundo = await loadImage(fundoUrl);
         ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 
@@ -41,7 +42,7 @@ app.get('/profile', async (req, res) => {
         const avatarMold = await loadImage("https://cdn.discordapp.com/attachments/1243775486514040934/1267246776709156928/281_Sem_Titulo_20240728192414.png?ex=66a81707&is=66a6c587&hm=1d177313e8983b8738ab57dc18b948d49876b1d07d2b9d0770b8f0029a6def48&");
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
-        // Username
+        // Draw username
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.fillText(username, 250, 125);
@@ -50,6 +51,7 @@ app.get('/profile', async (req, res) => {
         res.set('Content-Type', 'image/png');
         res.send(buffer);
     } catch (error) {
+        console.error('Error loading images:', error);
         res.status(500).send('Error loading images');
     }
 });
