@@ -35,7 +35,7 @@ app.get('/profile', async (req, res) => {
         ctx.drawImage(avatar, 50, 50, 138, 138);
         
         // Username
-        ctx.font = 'bold 60px "Open Sans"';
+        ctx.font = 'bold 500px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.fillText(username, 250, 125);
         
