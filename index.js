@@ -13,7 +13,7 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, avatarUrl, fundoUrl } = req.query;
+    let { username, avatarUrl } = req.query;
 
     if (!username || !avatarUrl) {
         return res.status(400).send('Missing username or avatarUrl');
