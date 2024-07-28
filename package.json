@@ -2,9 +2,9 @@
   "name": "image-api",
   "version": "1.0.0",
   "description": "API to generate profile images",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "canvas": "^2.9.0",
