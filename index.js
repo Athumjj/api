@@ -1,5 +1,5 @@
 const express = require('express');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, Image } = require('canvas');
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,7 +24,8 @@ app.get('/profile', async (req, res) => {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Load avatar
-        const avatar = await loadImage(imageData);
+        const avatar = new Image();
+        avatar.src = imageData;
         ctx.drawImage(avatar, 25, 25, 200, 200);
 
         // Username
