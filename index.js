@@ -33,6 +33,9 @@ app.get('/profile', async (req, res) => {
         // Load avatar
         const avatar = await loadImage(avatarUrl);
         ctx.drawImage(avatar, 70, 35, 150, 150);
+
+        const avatarMold = await loadImage("");
+        ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
         
         // Username
         ctx.font = 'bold 50px "Open Sans"';
