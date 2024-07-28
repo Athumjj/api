@@ -1,5 +1,6 @@
 const express = require('express');
 const { createCanvas, loadImage } = require('canvas');
+const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -11,13 +12,9 @@ app.get('/profile', async (req, res) => {
     }
 
     try {
-        const url = new URL(avatarUrl);
-        const validExtensions = /\.(jpg|jpeg|png)$/i;
-        const pathname = url.pathname;
-
-        if (!validExtensions.test(pathname)) {
-            return res.status(400).send('Invalid avatar URL. Only jpg, jpeg, and png are allowed.');
-        }
+        // Fetch the image data
+        const response = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
+        const imageData = Buffer.from(response.data, 'binary');
 
         const canvas = createCanvas(700, 250);
         const ctx = canvas.getContext('2d');
@@ -27,7 +24,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Load avatar
-        const avatar = await loadImage(avatarUrl);
+        const avatar = await loadImage(imageData);
         ctx.drawImage(avatar, 25, 25, 200, 200);
 
         // Username
@@ -39,7 +36,7 @@ app.get('/profile', async (req, res) => {
         res.set('Content-Type', 'image/png');
         res.send(buffer);
     } catch (error) {
-        res.status(500).send('Error processing the image.');
+        res.status(500).send('Failed to load image');
     }
 });
 
