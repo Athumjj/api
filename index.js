@@ -38,10 +38,7 @@ app.get('/profile', async (req, res) => {
         ctx.font = 'bold 40px "Open Sans"';
         ctx.fillStyle = '#000000';
         ctx.fillText(username, 258, 105);
-
-        const avatarMold = await loadImage("https://cdn.discordapp.com/attachments/1256477881635442759/1267151272520187984/280_Sem_Titulo_20240728130335.png?ex=66a7be15&is=66a66c95&hm=abafa951cf186843fc7928e6a2448feeffb96080f8e1b8b6a526111462974a23&");
-        ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
-
+        
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
         res.send(buffer);
