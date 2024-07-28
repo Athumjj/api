@@ -22,7 +22,7 @@ app.get('/profile', async (req, res) => {
     ctx.drawImage(avatar, 25, 25, 200, 200);
 
     // Username
-    ctx.font = 'bold 40px Arial, sans-serif';
+    ctx.font = 'bold 40px sans-serif';
     ctx.fillStyle = '#ffffff';
     ctx.fillText(username, 250, 125);
 
