@@ -34,7 +34,7 @@ app.get('/profile', async (req, res) => {
         const avatar = await loadImage(avatarUrl);
         ctx.drawImage(avatar, 70, 35, 150, 150);
 
-        const avatarMold = await loadImage("");
+        const avatarMold = await loadImage("https://cdn.discordapp.com/attachments/1243775486514040934/1267246776709156928/281_Sem_Titulo_20240728192414.png?ex=66a81707&is=66a6c587&hm=1d177313e8983b8738ab57dc18b948d49876b1d07d2b9d0770b8f0029a6def48&");
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
         
         // Username
