@@ -37,7 +37,7 @@ app.get('/profile', async (req, res) => {
         // Username
         ctx.font = 'bold 40px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.fillText(username, 258, 105);
+        ctx.fillText(username, 250, 125);
         
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
