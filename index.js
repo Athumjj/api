@@ -10,14 +10,15 @@ app.get('/profile', async (req, res) => {
         return res.status(400).send('Missing username or avatarUrl');
     }
 
-    const validExtensions = /\.(jpg|jpeg|png)$/i;
-    const urlPath = new URL(avatarUrl).pathname;
-
-    if (!validExtensions.test(urlPath)) {
-        return res.status(400).send('Invalid avatar URL. Only jpg, jpeg, and png are allowed.');
-    }
-
     try {
+        const url = new URL(avatarUrl);
+        const validExtensions = /\.(jpg|jpeg|png)$/i;
+        const pathname = url.pathname;
+
+        if (!validExtensions.test(pathname)) {
+            return res.status(400).send('Invalid avatar URL. Only jpg, jpeg, and png are allowed.');
+        }
+
         const canvas = createCanvas(700, 250);
         const ctx = canvas.getContext('2d');
 
