@@ -7,8 +7,9 @@ const path = require('path');
 // Register a specific font
 registerFont(path.join(__dirname, 'OpenSans-Regular.ttf'), { family: 'Open Sans' });
 
+// Function to clean avatar URL
 const cleanAvatarUrl = (url) => {
-    return url.replace(/(\.png|\.jpeg|\.jpg|\.webp)\?.*$/, '$1');
+    return url.replace(/(\.png|\.jpeg|\.jpg|\.webp)(\?.*)?$/, '$1');
 };
 
 app.get('/profile', async (req, res) => {
