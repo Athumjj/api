@@ -36,6 +36,7 @@ app.get('/profile', async (req, res) => {
         res.set('Content-Type', 'image/png');
         res.send(buffer);
     } catch (error) {
+        console.error('Error loading image:', error);
         res.status(500).send('Failed to load image');
     }
 });
