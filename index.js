@@ -22,11 +22,11 @@ app.get('/profile', async (req, res) => {
     // Convert avatar URL to PNG
     avatarUrl = convertToPng(avatarUrl);
 
-    const canvas = createCanvas(700, 250);
+    const canvas = createCanvas(700, 700);
     const ctx = canvas.getContext('2d');
 
     // Background
-    const bgImage = await loadImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPug_Mbp9HNPCj1P8HE3NUwHuzUlfUkZC63y3ggmkc88DtG9O2powcj22&s=10");
+    const bgImage = await loadImage("https://cdn.discordapp.com/attachments/1256477881635442759/1267136493357367358/banner-bot.png?ex=66a7b052&is=66a65ed2&hm=37657b48b6154aa7332305288d490487425130b61ef2e184fc9ecb3efd81b8fb&");
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
         
 
