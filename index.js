@@ -32,11 +32,11 @@ app.get('/profile', async (req, res) => {
     try {
         // Load avatar
         const avatar = await loadImage(avatarUrl);
-        ctx.drawImage(avatar, 25, 25, 200, 200);
+        ctx.drawImage(avatar, 25, 25, 100, 100);
         
         // Username
         ctx.font = 'bold 40px "Open Sans"';
-        ctx.fillStyle = '#000000';
+        ctx.fillStyle = '#ffffff';
         ctx.fillText(username, 258, 105);
         
         const buffer = canvas.toBuffer('image/png');
