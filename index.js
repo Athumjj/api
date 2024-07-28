@@ -1,7 +1,11 @@
 const express = require('express');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const app = express();
 const port = process.env.PORT || 3000;
+const path = require('path');
+
+// Register a specific font
+registerFont(path.join(__dirname, 'OpenSans-Regular.ttf'), { family: 'Open Sans' });
 
 const cleanAvatarUrl = (url) => {
     return url.replace(/(\.png|\.jpeg|\.jpg|\.webp)\?.*$/, '$1');
@@ -29,7 +33,7 @@ app.get('/profile', async (req, res) => {
     ctx.drawImage(avatar, 25, 25, 200, 200);
 
     // Username
-    ctx.font = 'bold 40px sans-serif';
+    ctx.font = 'bold 40px "Open Sans"';
     ctx.fillStyle = '#ffffff';
     ctx.fillText(username, 250, 125);
 
