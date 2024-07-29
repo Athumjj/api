@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 
 // Register a specific font
-const fontPath = path.resolve(__dirname, 'Fonte.ttf');
+const fontPath = path.resolve(__dirname, 'fonte.ttf');
 registerFont(fontPath, { family: 'Open Sans' });
 
 // Function to clean avatar URL and convert to PNG
