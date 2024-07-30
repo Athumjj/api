@@ -47,6 +47,7 @@ app.get('/profile', async (req, res) => {
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
         }else if (idioma === "esp") {
+            sobremim = "Sobre mi:";
         }
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
