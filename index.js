@@ -5,8 +5,7 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 
 // Register a specific font
-const fontPath = path.resolve(__dirname, 'fonte.ttf');
-registerFont(fontPath, { family: 'Open Sans' });
+registerFont(path.join(__dirname, 'OpenSans-Regular.ttf'), { family: 'Open Sans' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
@@ -23,7 +22,7 @@ app.get('/profile', async (req, res) => {
     // Convert avatar URL to PNG
     avatarUrl = convertToPng(avatarUrl);
 
-    const canvas = createCanvas(1280, 720);
+    const canvas = createCanvas(700, 250);
     const ctx = canvas.getContext('2d');
 
     // Background
@@ -37,12 +36,12 @@ app.get('/profile', async (req, res) => {
 
         const avatarMold = await loadImage("https://cdn.discordapp.com/attachments/1243775486514040934/1267246776709156928/281_Sem_Titulo_20240728192414.png?ex=66a81707&is=66a6c587&hm=1d177313e8983b8738ab57dc18b948d49876b1d07d2b9d0770b8f0029a6def48&");
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
-        
+
         // Username
-        ctx.font = 'bold 50px "Open Sans"';
+        ctx.font = 'bold 40px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.fillText(username, 250, 125);
-        
+
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
         res.send(buffer);
