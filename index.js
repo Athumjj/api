@@ -43,7 +43,7 @@ app.get('/profile', async (req, res) => {
         // Username
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.fillText('Sobre Mim:', 640, 360);
+        ctx.fillText('Sobre Mim:', 640, 400);
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
