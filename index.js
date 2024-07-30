@@ -6,6 +6,7 @@ const path = require('path');
 
 // Register a specific font
 registerFont(path.join(__dirname, 'fonte.ttf'), { family: 'Open Sans' });
+registerFont(path.join(__dirname, 'emoji.ttf'), { family: 'Emoji' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
@@ -46,13 +47,13 @@ app.get('/profile', async (req, res) => {
         
         if (idioma === "en") {
             sobremim = "About me:";
-            name = username + " EN";
+            name = username + ;
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
-            name = username + " :flag_BR:";
+            name = username + ;
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
-            name = username + " ESP";
+            name = username + ;
         }
         
         ctx.font = 'bold 30px "Open Sans"';
