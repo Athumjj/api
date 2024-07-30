@@ -6,7 +6,7 @@ const path = require('path');
 
 // Register a specific font
 registerFont(path.join(__dirname, 'font/fonte.ttf'), { family: 'Open Sans' });
-registerFont(path.join(__dirname, 'font/emoji.ttf'), { family: 'Open Emoji' });
+registerFont(path.join(__dirname, 'font/fonte_dois.ttf'), { family: 'Open Emoji' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
