@@ -13,10 +13,10 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, sobreMim, avatarUrl } = req.query;
+    let { username, idioma, sobreMim, avatarUrl } = req.query;
 
-    if (!username || !sobreMim || !avatarUrl) {
-        return res.status(400).send('Missing username or sobreMim or avatarUrl');
+    if (!username || !idioma || !sobreMim || !avatarUrl) {
+        return res.status(400).send('Missing username or idioma or sobreMim or avatarUrl');
     }
 
     // Convert avatar URL to PNG
@@ -41,11 +41,18 @@ app.get('/profile', async (req, res) => {
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
         // Username
+        const sobremim = null;
+        if (idioma === "en") {
+            sobremim = "About me:";
+        }else if (idioma === "pt") {
+            sobremim = "Sobre mim:";
+        }else if (idioma === "esp") {
+        }
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('Sobre Mim:', canvas.width / 2, 633);
+        ctx.fillText(sobremim, canvas.width / 2, 633);
 
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
