@@ -47,13 +47,13 @@ app.get('/profile', async (req, res) => {
         
         if (idioma === "en") {
             sobremim = "About me:";
-            name = username + ;
+            name = username + " 🇺🇸";
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
-            name = username + ;
+            name = username + " 🇧🇷";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
-            name = username + ;
+            name = username + " 🇪🇸";
         }
         
         ctx.font = 'bold 30px "Open Sans"';
@@ -68,7 +68,7 @@ app.get('/profile', async (req, res) => {
         ctx.textBaseline = 'middle';
         ctx.fillText(sobreMim, canvas.width / 2, 670);
         
-        ctx.font = 'bold 50px "Open Sans"';
+        ctx.font = 'bold 50px "Emoji"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
