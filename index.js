@@ -5,11 +5,7 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 
 // Register a specific font
-const openSansPath = path.join(__dirname, 'font/fonte.ttf');
-const emojiFontPath = path.join(__dirname, 'font/emoji.ttf');
-
-registerFont(openSansPath, { family: 'Open Sans' });
-registerFont(emojiFontPath, { family: 'Emoji' });
+registerFont(path.join(__dirname, 'font/fonte.ttf'), { family: 'Open Sans' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
@@ -46,7 +42,6 @@ app.get('/profile', async (req, res) => {
 
         // Username
         let sobremim = null;
-        const name = username + " 🇧🇷";
 
         
         if (idioma === "en") {
@@ -69,11 +64,11 @@ app.get('/profile', async (req, res) => {
         ctx.textBaseline = 'middle';
         ctx.fillText(sobreMim, canvas.width / 2, 670);
         
-        ctx.font = 'bold 50px "Emoji"';
+        ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(name, 250, 110);
+        ctx.fillText(username, 250, 110);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
