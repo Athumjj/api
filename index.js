@@ -43,13 +43,18 @@ app.get('/profile', async (req, res) => {
         // Username
         let sobremim = null;
         let name = null;
+        
         if (idioma === "en") {
             sobremim = "About me:";
+            name = username + " 🇺🇸";
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
+            name = username + " 🇧🇷";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
+            name = username + "🇪🇸";
         }
+        
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
