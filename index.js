@@ -26,7 +26,7 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     // Background
-    const bgImage = await loadImage("https://cdn.discordapp.com/attachments/1232193462690910220/1267242641431724223/1722204575960.png?ex=66a8132d&is=66a6c1ad&hm=6e399f879a798488fdaf717e4832fea0ec47b9dadb0063bcbfc41e7e813a87bf&");
+    const bgImage = await loadImage(path.join(__dirname, 'bg.png');
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
     try {
@@ -34,7 +34,7 @@ app.get('/profile', async (req, res) => {
         const avatar = await loadImage(avatarUrl);
         ctx.drawImage(avatar, 70, 35, 150, 150);
 
-        const avatarMold = await loadImage("https://cdn.discordapp.com/attachments/1243775486514040934/1267246776709156928/281_Sem_Titulo_20240728192414.png?ex=66a81707&is=66a6c587&hm=1d177313e8983b8738ab57dc18b948d49876b1d07d2b9d0770b8f0029a6def48&");
+        const avatarMold = await loadImage(path.join(__dirname, 'avatarMold.png');
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
         // Username
