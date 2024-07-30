@@ -13,10 +13,10 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, avatarUrl } = req.query;
+    let { username, sobreMim, avatarUrl } = req.query;
 
-    if (!username || !avatarUrl) {
-        return res.status(400).send('Missing username or avatarUrl');
+    if (!username || !sobreMim || !avatarUrl) {
+        return res.status(400).send('Missing username or sobreMim or avatarUrl');
     }
 
     // Convert avatar URL to PNG
@@ -46,6 +46,12 @@ app.get('/profile', async (req, res) => {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('Sobre Mim:', canvas.width / 2, 633);
+
+        ctx.font = 'bold 30px "Open Sans"';
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(sobreMim, canvas.width / 2, 670);
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
