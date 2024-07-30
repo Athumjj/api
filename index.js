@@ -42,17 +42,13 @@ app.get('/profile', async (req, res) => {
 
         // Username
         let sobremim = null;
-        let name = null;
         
         if (idioma === "en") {
             sobremim = "About me:";
-            name = username + " 🇺🇸";
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
-            name = username + " \u{1F1E7}\u{1F1F7}";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
-            name = username + " 🇪🇸";
         }
         
         ctx.font = 'bold 30px "Open Sans"';
@@ -71,7 +67,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(name, 250, 110);
+        ctx.fillText(username, 250, 110);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
