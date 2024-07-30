@@ -43,7 +43,8 @@ app.get('/profile', async (req, res) => {
         // Username
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.fillText('Sobre Mim:', 300, 600);
+        ctx.textAlign = 'center';
+        ctx.fillText('Sobre Mim:', canvas.width / 2, 600);
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
