@@ -22,7 +22,7 @@ app.get('/profile', async (req, res) => {
     // Convert avatar URL to PNG
     avatarUrl = convertToPng(avatarUrl);
 
-    const canvas = createCanvas(700, 250);
+    const canvas = createCanvas(1280, 720);
     const ctx = canvas.getContext('2d');
 
     // Background
