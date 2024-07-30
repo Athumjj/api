@@ -52,7 +52,7 @@ app.get('/profile', async (req, res) => {
             name = username + " 🇧🇷";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
-            name = username + "🇪🇸";
+            name = username + " 🇪🇸";
         }
         
         ctx.font = 'bold 30px "Open Sans"';
