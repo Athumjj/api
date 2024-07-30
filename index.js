@@ -41,7 +41,8 @@ app.get('/profile', async (req, res) => {
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
         // Username
-        const sobremim = null;
+        let sobremim = null;
+        let name = null;
         if (idioma === "en") {
             sobremim = "About me:";
         }else if (idioma === "pt") {
@@ -65,7 +66,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(username, 250, 110);
+        ctx.fillText(name, 250, 110);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
