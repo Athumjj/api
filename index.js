@@ -49,7 +49,7 @@ app.get('/profile', async (req, res) => {
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'right';
+        ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillText(username, 250, 125);
 
