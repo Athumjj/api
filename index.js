@@ -41,6 +41,10 @@ app.get('/profile', async (req, res) => {
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
         // Username
+        ctx.font = 'bold 30px "Open Sans"';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('Sobre Mim:', 640, 360);
+        
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.fillText(username, 250, 125);
