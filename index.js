@@ -51,7 +51,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'right';
         ctx.textBaseline = 'middle';
-        ctx.fillText(username, 330, 110);
+        ctx.fillText(username, 250, 125);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
