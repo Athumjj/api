@@ -44,7 +44,8 @@ app.get('/profile', async (req, res) => {
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
-        ctx.fillText('Sobre Mim:', canvas.width / 2, 600);
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Sobre Mim:', canvas.width / 2, 650);
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
