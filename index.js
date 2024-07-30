@@ -26,7 +26,7 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     // Background
-    const bgImage = await loadImage(path.join(__dirname, 'bg.png');
+    const bgImage = await loadImage(path.join(__dirname, 'bg.png'));
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
     try {
@@ -34,7 +34,7 @@ app.get('/profile', async (req, res) => {
         const avatar = await loadImage(avatarUrl);
         ctx.drawImage(avatar, 70, 35, 150, 150);
 
-        const avatarMold = await loadImage(path.join(__dirname, 'avatarMold.png');
+        const avatarMold = await loadImage(path.join(__dirname, 'avatarMold.png'));
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
         // Username
