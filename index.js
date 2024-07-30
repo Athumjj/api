@@ -49,7 +49,7 @@ app.get('/profile', async (req, res) => {
             name = username + " 🇺🇸";
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
-            name = username + " &#127463;&#127479;";
+            name = username + " \u{1F1E7}\u{1F1F7}";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
             name = username + " 🇪🇸";
