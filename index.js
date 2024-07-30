@@ -45,13 +45,13 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('Sobre Mim:', canvas.width / 2, 630);
+        ctx.fillText('Sobre Mim:', canvas.width / 2, 633);
         
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(username, 320, 115);
+        ctx.fillText(username, 320, 110);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
