@@ -4,9 +4,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
 
-// Register a specific font
-registerFont(path.join(__dirname, 'font/fonte.ttf'), { family: 'Open Sans' });
-registerFont(path.join(__dirname, 'font/emoji.ttf'), { family: 'Emoji' });
+// Register fonts
+const fontPath = path.join(__dirname, 'font/fonte.ttf');
+const emojiFontPath = path.join(__dirname, 'font/emoji.ttf');
+registerFont(fontPath, { family: 'Open Sans' });
+registerFont(emojiFontPath, { family: 'Emoji' });
 
 // Function to clean avatar URL and convert to PNG
 const convertToPng = (url) => {
@@ -26,59 +28,53 @@ app.get('/profile', async (req, res) => {
     const canvas = createCanvas(1280, 720);
     const ctx = canvas.getContext('2d');
 
-    // Background
-    const fundo = await loadImage(path.join(__dirname, 'image/banner-bot.png'));
-    ctx.drawImage(fundo, 0, 0, canvas.width,  canvas.height);
-    
-    const bgImage = await loadImage(path.join(__dirname, 'image/bg.png'));
-    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-
     try {
-        // Load avatar
+        // Load images
+        const fundo = await loadImage(path.join(__dirname, 'image/banner-bot.png'));
+        const bgImage = await loadImage(path.join(__dirname, 'image/bg.png'));
         const avatar = await loadImage(avatarUrl);
-        ctx.drawImage(avatar, 70, 35, 150, 150);
-
         const avatarMold = await loadImage(path.join(__dirname, 'image/avatarMold.png'));
+
+        // Draw background and avatar
+        ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(avatar, 70, 35, 150, 150);
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
-        // Username
-        let sobremim = null;
-        let name = null;
-        
+        // Define texts based on language
+        let sobremim = '';
+        let name = '';
+
         if (idioma === "en") {
             sobremim = "About me:";
             name = username + " 🇺🇸";
-        }else if (idioma === "pt") {
+        } else if (idioma === "pt") {
             sobremim = "Sobre mim:";
             name = username + " 🇧🇷";
-        }else if (idioma === "esp") {
+        } else if (idioma === "esp") {
             sobremim = "Sobre mi:";
             name = username + " 🇪🇸";
         }
-        
+
+        // Draw text
         ctx.font = 'bold 30px "Open Sans"';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(sobremim, canvas.width / 2, 633);
-
-        ctx.font = 'bold 30px "Open Sans"';
-        ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
         ctx.fillText(sobreMim, canvas.width / 2, 670);
-        
+
         ctx.font = 'bold 50px "Emoji"';
-        ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
         ctx.fillText(name, 250, 110);
 
+        // Send the image as response
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
         res.send(buffer);
     } catch (error) {
-        res.status(500).send('Error loading avatar image');
+        console.error('Error loading image:', error);
+        res.status(500).send('Error loading images or processing request');
     }
 });
 
