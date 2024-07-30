@@ -26,6 +26,8 @@ app.get('/profile', async (req, res) => {
     const ctx = canvas.getContext('2d');
 
     // Background
+    const fundo = await loadImage(path.join(__dirname, 'banner-bot.png'));
+    ctx.drawImage(fundo, 0, 0, canvas.width,  canvas.height);
     const bgImage = await loadImage(path.join(__dirname, 'bg.png'));
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
