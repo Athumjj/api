@@ -49,7 +49,7 @@ app.get('/profile', async (req, res) => {
             name = username + " EN";
         }else if (idioma === "pt") {
             sobremim = "Sobre mim:";
-            name = username + " BR";
+            name = username + " :flag_BR:";
         }else if (idioma === "esp") {
             sobremim = "Sobre mi:";
             name = username + " ESP";
