@@ -80,7 +80,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillText(coin, 303, 170);
 
         if (preso == "True") {
-            const bgPrisao = await loadImage(path.join(__dirname, 'Image/bgPreso.png'));
+            const bgPrisao = await loadImage(path.join(__dirname, 'image/bgPreso.png'));
             ctx.drawImage(bgPrisao, 0, 0, canvas.width, canvas.height);
         }
 
