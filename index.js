@@ -77,7 +77,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(coin, 280, 170);
+        ctx.fillText(coin, 295, 170);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
