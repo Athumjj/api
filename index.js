@@ -13,10 +13,10 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, idioma, sobreMim, avatarUrl } = req.query;
+    let { username, idioma, sobreMim, coin, bank, avatarUrl } = req.query;
 
-    if (!username || !idioma || !sobreMim || !avatarUrl) {
-        return res.status(400).send('Missing username or idioma or sobreMim or avatarUrl');
+    if (!username || !idioma || !sobreMim || !coin || !bank || !avatarUrl) {
+        return res.status(400).send('Missing username or idioma or sobreMim or coin or bank or avatarUrl');
     }
 
     // Convert avatar URL to PNG
