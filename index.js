@@ -13,9 +13,9 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, idioma, sobreMim, coin, cor, avatarUrl } = req.query;
+    let { username, idioma, sobreMim, coin, avatarUrl } = req.query;
 
-    if (!username || !idioma || !sobreMim || !coin || !cor || !avatarUrl) {
+    if (!username || !idioma || !sobreMim || !coin || !avatarUrl) {
         return res.status(400).send('Missing username or idioma or sobreMim or coin or avatarUrl');
     }
 
@@ -45,7 +45,6 @@ app.get('/profile', async (req, res) => {
         
         // Username
         let sobremim = null;
-        const corResult = "#" + cor;
 
         
         if (idioma === "en") {
@@ -75,7 +74,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillText(username, 250, 110);
 
         ctx.font = 'bold 32px "Open Sans"';
-        ctx.fillStyle = corResult;
+        ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillText(coin, 303, 170);
