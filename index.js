@@ -75,7 +75,7 @@ app.get('/profile', async (req, res) => {
 
         ctx.font = 'bold 50px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'left';
+        ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(coin, canvas.width / 2 + 200, canvas.height / 2 + 200);
 
