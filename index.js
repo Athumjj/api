@@ -13,10 +13,10 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, idioma, sobreMim, coin, bank, avatarUrl } = req.query;
+    let { username, idioma, sobreMim, coin, avatarUrl } = req.query;
 
-    if (!username || !idioma || !sobreMim || !coin || !bank || !avatarUrl) {
-        return res.status(400).send('Missing username or idioma or sobreMim or coin or bank or avatarUrl');
+    if (!username || !idioma || !sobreMim || !coin || !avatarUrl) {
+        return res.status(400).send('Missing username or idioma or sobreMim or coin or avatarUrl');
     }
 
     // Convert avatar URL to PNG
@@ -77,7 +77,7 @@ app.get('/profile', async (req, res) => {
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(coin, canvas.width / 2 + 200, canvas.height / 2 + 200);
+        ctx.fillText(coin, 250, 120);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
