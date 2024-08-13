@@ -73,11 +73,11 @@ app.get('/profile', async (req, res) => {
         ctx.textBaseline = 'middle';
         ctx.fillText(username, 250, 110);
 
-        ctx.font = 'bold 30px "Open Sans"';
+        ctx.font = 'bold 32px "Open Sans"';
         ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'center';
+        ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(coin, 250, 120);
+        ctx.fillText(coin, 250, 150);
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
