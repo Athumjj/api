@@ -40,6 +40,9 @@ app.get('/profile', async (req, res) => {
         const avatarMold = await loadImage(path.join(__dirname, 'image/avatarMold.png'));
         ctx.drawImage(avatarMold, 0, 0, canvas.width, canvas.height);
 
+        const icons = await loadImage(path.join(__dirname, 'image/icons.png'));
+        ctx.drawImage(icons, 0, 0, canvas.width, canvas.height);
+        
         // Username
         let sobremim = null;
 
