@@ -13,10 +13,10 @@ const convertToPng = (url) => {
 };
 
 app.get('/profile', async (req, res) => {
-    let { username, idioma, sobreMim, coin, avatarUrl } = req.query;
+    let { username, idioma, sobreMim, coin, preso, avatarUrl } = req.query;
 
-    if (!username || !idioma || !sobreMim || !coin || !avatarUrl) {
-        return res.status(400).send('Missing username or idioma or sobreMim or coin or avatarUrl');
+    if (!username || !idioma || !sobreMim || !coin || !preso || !avatarUrl) {
+        return res.status(400).send('Missing username or idioma or sobreMim or coin or preso or avatarUrl');
     }
 
     // Convert avatar URL to PNG
@@ -78,6 +78,13 @@ app.get('/profile', async (req, res) => {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillText(coin, 303, 170);
+
+        if (preso == "True") {
+            const bgPrisao = await loadImage(path.join(__dirname, 'Image/bgPreso.png'));
+            ctx.drawImage(bgPrisao, 0, 0, canvas.width, canvas.height);
+        }
+
+
 
         const buffer = canvas.toBuffer('image/png');
         res.set('Content-Type', 'image/png');
